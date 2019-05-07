@@ -3,7 +3,7 @@ package win.zwping.frame;
 import com.blankj.rxbus.RxBus;
 
 /**
- * <p>describe：
+ * <p>describe：RxBus
  * <p>    note：
  * <p> @author：zwp on 2019-05-06 16:02:12 mail：1101558280@qq.com web: http://www.zwping.win </p>
  */
