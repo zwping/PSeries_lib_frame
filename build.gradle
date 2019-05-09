@@ -31,5 +31,4 @@ dependencies {
     api 'com.orhanobut:hawk:2.0.1'  // 替换sharePreferences，且加密保存（能存对象）
     api 'com.alibaba:fastjson:1.1.71.android'
     api 'com.blankj:rxbus:1.6' // 不能忍受注解式开发
-    api 'org.greenrobot:eventbus:3.1.1' // 事件总线 - 超级解耦工具，项目必备
 }

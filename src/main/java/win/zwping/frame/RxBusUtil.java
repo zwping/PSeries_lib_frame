@@ -13,29 +13,19 @@ public final class RxBusUtil {
         RxBus.getDefault().unregister(o);
     }
 
-    public static <B> void subscribe(Object context, B b, final Callback<B> callback) {
-        RxBus.getDefault().subscribe(context, new RxBus.Callback<B>() {
-            @Override
-            public void onEvent(B b) {
-                callback.onEvent(b);
-            }
-        });
+    public static <B> void subscribe(Object o, RxBus.Callback<B> callback) {
+        RxBus.getDefault().subscribe(o, callback);
     }
 
-    public static <B> void subscribe(Object context, String tag, B b, final Callback<B> callback) {
-        RxBus.getDefault().subscribe(context, tag, new RxBus.Callback<B>() {
-            @Override
-            public void onEvent(B b) {
-                callback.onEvent(b);
-            }
-        });
+    public static <B> void subscribe(final Object o, final String tag, RxBus.Callback<B> callback) {
+        RxBus.getDefault().subscribe(o, tag, callback);
     }
 
     public static void post(Object o) {
         RxBus.getDefault().post(o);
     }
 
-    public static void post(String tag, Object o) {
+    public static void post(Object o, String tag) {
         RxBus.getDefault().post(o, tag);
     }
 
@@ -43,7 +33,7 @@ public final class RxBusUtil {
         RxBus.getDefault().postSticky(o);
     }
 
-    public static void postSticky(String tag, Object o) {
+    public static void postSticky(Object o, String tag) {
         RxBus.getDefault().postSticky(o, tag);
     }
 
@@ -51,7 +41,7 @@ public final class RxBusUtil {
         RxBus.getDefault().removeSticky(o);
     }
 
-    public static void removeSticky(String tag, Object o) {
+    public static void removeSticky(Object o, String tag) {
         RxBus.getDefault().removeSticky(o, tag);
     }
 
