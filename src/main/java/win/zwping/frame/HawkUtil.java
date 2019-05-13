@@ -6,6 +6,8 @@ import com.blankj.rxbus.RxBus;
 import com.orhanobut.hawk.Hawk;
 import win.zwping.code.Util;
 
+import java.util.List;
+
 /**
  * <p>describe：替换SharedPreferences的框架
  * <p>    note：
@@ -42,6 +44,12 @@ public class HawkUtil {
     }
 
     public static <T> T get(String key) {
+        return Hawk.get(key);
+    }
+
+    /*** AssertionError 目前无法解决的错误，仅在华为手机上出现，切记不可使用hawk存储list对象 ***/
+    @Deprecated
+    public static <T> List<T> getList(String key) {
         return Hawk.get(key);
     }
 
