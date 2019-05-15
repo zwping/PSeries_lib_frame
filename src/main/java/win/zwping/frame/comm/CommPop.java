@@ -5,10 +5,8 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
-
 import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
-
 import razerdp.basepopup.BasePopupWindow;
 import win.zwping.code.review.PEditText;
 import win.zwping.code.review.PImageView;
@@ -66,6 +64,16 @@ public class CommPop extends BasePopupWindow {
     public CommPop setIsInput(Boolean input) {
         contentPet.setVisibility(input ? View.VISIBLE : GONE);
         contentPet.setVisibility(input ? GONE : View.VISIBLE);
+        return this;
+    }
+
+    public CommPop setCancelTxt(CharSequence s) {
+        cancelPtv.setText(s);
+        return this;
+    }
+
+    public CommPop setConfirmTxt(CharSequence s) {
+        confirmPtv.setText(s);
         return this;
     }
 
@@ -143,7 +151,7 @@ public class CommPop extends BasePopupWindow {
         confirmPtv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                lis.onConfirm(contentPet.getContent());
+                lis.onConfirm(CommPop.this, contentPet.getContent());
             }
         });
         return this;
@@ -168,7 +176,7 @@ public class CommPop extends BasePopupWindow {
     ///////////////////////////
 
     public interface OnConfirmClickListener {
-        void onConfirm(@Nullable String s);
+        void onConfirm(CommPop pop, @Nullable String s);
     }
 
     public interface OnCancelClickListener {

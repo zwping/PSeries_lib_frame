@@ -26,7 +26,7 @@ public class Http {
         return init(app, null);
     }
 
-    public static void destory(Object tag) {
+    public static void destroy(Object tag) {
         OkGo.getInstance().cancelTag(tag);
     }
 
