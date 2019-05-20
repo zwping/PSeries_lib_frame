@@ -32,6 +32,7 @@ public class CommPop extends BasePopupWindow {
 
     public CommPop(Context context) {
         super(context, (int) (ScreenUtil.getScreenWidth() * 0.75), ViewGroup.LayoutParams.WRAP_CONTENT);
+        setPopupGravity(Gravity.CENTER);
         exitPiv = findViewById(R.id.exit_piv);
         contentPet = findViewById(R.id.content_pet);
         contentPtv = findViewById(R.id.content_ptv);
@@ -169,7 +170,6 @@ public class CommPop extends BasePopupWindow {
 
 
     public void show() {
-        setPopupGravity(Gravity.CENTER);
         showPopupWindow();
     }
 
