@@ -45,6 +45,7 @@ public final class RxBusUtil {
         RxBus.getDefault().removeSticky(o, tag);
     }
 
+
     //////////////////////////////
 
     public interface Callback<B> {
