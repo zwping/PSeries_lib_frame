@@ -51,4 +51,16 @@ public final class RxBusUtil {
         void onEvent(B b);
     }
 
+    ///////////////
+    /*
+
+        RxBusUtil.subscribe(this, "notifyRegion", object : RxBus.Callback<String>() {
+            override fun onEvent(s: String) {
+            }
+        })
+
+
+
+     */
+
 }
