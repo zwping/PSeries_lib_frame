@@ -21,6 +21,15 @@ public final class RxBusUtil {
         RxBus.getDefault().subscribe(o, tag, callback);
     }
 
+    public static <B> void subscribeSticky(Object o, RxBus.Callback<B> callback) {
+        RxBus.getDefault().subscribeSticky(o, callback);
+    }
+
+    public static <B> void subscribeSticky(final Object o, final String tag, RxBus.Callback<B> callback) {
+        RxBus.getDefault().subscribeSticky(o, tag, callback);
+    }
+
+
     public static void post(Object o) {
         RxBus.getDefault().post(o);
     }
