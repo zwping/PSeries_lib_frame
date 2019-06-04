@@ -23,6 +23,6 @@ public class LoadingPop extends BasePopupWindow {
 
     @Override
     public View onCreateContentView() {
-        return View.inflate(getContext(), R.layout.comm_pop_loading, null);
+        return createPopupById(R.layout.comm_pop_loading);
     }
 }
