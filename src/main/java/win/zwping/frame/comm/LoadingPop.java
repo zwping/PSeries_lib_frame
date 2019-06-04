@@ -6,13 +6,14 @@ import android.view.Gravity;
 import android.view.View;
 import razerdp.basepopup.BasePopupWindow;
 import win.zwping.frame.R;
+import win.zwping.frame.base.BasePop;
 
 /**
  * <p>describe：
  * <p>    note：
  * <p> @author：zwp on 2019-05-14 16:27:44 mail：1101558280@qq.com web: http://www.zwping.win </p>
  */
-public class LoadingPop extends BasePopupWindow {
+public class LoadingPop extends BasePop {
 
     public LoadingPop(Context context) {
         super(context);
@@ -23,6 +24,6 @@ public class LoadingPop extends BasePopupWindow {
 
     @Override
     public View onCreateContentView() {
-        return View.inflate(getContext(), R.layout.comm_pop_loading, null);
+        return createPopupById(R.layout.comm_pop_loading);
     }
 }
