@@ -13,8 +13,20 @@ public abstract class BasePop extends BasePopupWindow {
 
     //////////////////////////////////////////////
 
+    /*** 很重要的一个方法 ***/
     public BaseViewHolder getViewHolder() {
         return new BaseViewHolder(getContentView());
+    }
+
+    //////////////////////////////////////////////
+
+    public void setOnClickLis(int id, final View.OnClickListener lis) {
+        findViewById(id).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lis.onClick(v);
+            }
+        });
     }
 
     public void setOnDismiss(int... ids) {

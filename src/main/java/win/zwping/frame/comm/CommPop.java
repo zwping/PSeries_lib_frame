@@ -62,6 +62,11 @@ public class CommPop extends BasePopupWindow {
         return createPopupById(R.layout.comm_pop);
     }
 
+    public CommPop setIsInput(){
+        setIsInput(true);
+        return this;
+    }
+
     public CommPop setIsInput(Boolean input) {
         contentPet.setVisibility(input ? View.VISIBLE : GONE);
         contentPet.setVisibility(input ? GONE : View.VISIBLE);
