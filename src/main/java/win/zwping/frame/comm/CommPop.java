@@ -59,7 +59,7 @@ public class CommPop extends BasePopupWindow {
 
     @Override
     public View onCreateContentView() {
-        return View.inflate(getContext(), R.layout.comm_pop, null);
+        return createPopupById(R.layout.comm_pop);
     }
 
     public CommPop setIsInput(Boolean input) {
