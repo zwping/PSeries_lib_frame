@@ -1,9 +1,7 @@
 package win.zwping.frame.lis;
 
-import razerdp.basepopup.BasePopupWindow;
+import win.zwping.frame.base.BasePop;
 
 public interface OnPopupListener {
-
-    void onPop(BasePopupWindow it);
-
+    void onPop(BasePop it);
 }
