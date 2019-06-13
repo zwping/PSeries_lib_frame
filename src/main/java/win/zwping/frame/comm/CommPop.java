@@ -69,7 +69,7 @@ public class CommPop extends BasePopupWindow {
 
     public CommPop setIsInput(Boolean input) {
         contentPet.setVisibility(input ? View.VISIBLE : GONE);
-        contentPet.setVisibility(input ? GONE : View.VISIBLE);
+        contentPtv.setVisibility(input ? GONE : View.VISIBLE);
         return this;
     }
 

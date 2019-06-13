@@ -2,6 +2,7 @@ package win.zwping.frame.http;
 
 import androidx.annotation.Nullable;
 import com.alibaba.fastjson.JSON;
+import com.lzy.okgo.cache.CacheMode;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.exception.StorageException;
 import com.lzy.okgo.model.Response;
@@ -140,6 +141,16 @@ public class Build<B extends HttpBean> {
         return this;
     }
 
+    public Build<B> cacheMode() {
+        cacheMode(CacheMode.FIRST_CACHE_THEN_REQUEST);
+        return this;
+    }
+
+    public Build<B> cacheMode(CacheMode cacheMode) {
+        request.cacheMode(cacheMode);
+        return this;
+    }
+
     /////////////////////////////////
 
     public void init() {
@@ -182,7 +193,7 @@ public class Build<B extends HttpBean> {
                 super.onCacheSuccess(response);
                 if (null != httpConfig && autoShowLoading) httpConfig.hideProgress(request.getTag());
                 try {
-                    B data = JSON.parseObject(response.body(), (Type) bean.getClass());
+                    bean = JSON.parseObject(response.body(), (Type) bean.getClass());
                     if (null != httpConfig) httpConfig.onCacheSuccess(Build.this);
                     else setCacheSuccessListener();
 //                        if (data.getCode().equals("200")) { // 200 才算成功
