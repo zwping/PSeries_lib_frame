@@ -45,6 +45,8 @@ public class Build<B extends HttpBean> {
     private Boolean autoShowLoading = false;
     private Boolean autoShowErrorMsg = true;
 
+    private Boolean cacheSucDataToSuc = false; // 将读取缓存成功的数据通过OnSuccessListener输出
+
     private OnStdSuccessListener<B> onStdSuccessListener;
     private OnSuccessListener<B> onSuccessListener;
     private OnStdSuccessListener<B> onStdCacheSuccessListener;
@@ -85,6 +87,21 @@ public class Build<B extends HttpBean> {
 
     public Build setAutoShowErrorMsg(Boolean autoShow) {
         this.autoShowErrorMsg = autoShow;
+        return this;
+    }
+
+    public Build<B> cacheMode() {
+        cacheMode(CacheMode.FIRST_CACHE_THEN_REQUEST);
+        return this;
+    }
+
+    public Build<B> cacheMode(CacheMode cacheMode) {
+        request.cacheMode(cacheMode);
+        return this;
+    }
+
+    public Build<B> cacheSucToSuc() {
+        cacheSucDataToSuc = true;
         return this;
     }
 
@@ -138,16 +155,6 @@ public class Build<B extends HttpBean> {
             } else {
                 request.params(k, v.toString());
             }
-        return this;
-    }
-
-    public Build<B> cacheMode() {
-        cacheMode(CacheMode.FIRST_CACHE_THEN_REQUEST);
-        return this;
-    }
-
-    public Build<B> cacheMode(CacheMode cacheMode) {
-        request.cacheMode(cacheMode);
         return this;
     }
 
@@ -239,6 +246,7 @@ public class Build<B extends HttpBean> {
     public void setCacheSuccessListener() {
         if (null != onStdCacheSuccessListener) onStdCacheSuccessListener.onSuccess(requestNum, hasRefresh, bean);
         if (null != onCacheSuccessListener) onCacheSuccessListener.onSuccess(bean);
+        if (cacheSucDataToSuc) setSuccessListener();
     }
 
     public void setErrorListener() {
