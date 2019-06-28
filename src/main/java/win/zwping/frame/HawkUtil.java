@@ -53,8 +53,8 @@ public class HawkUtil {
         return Hawk.get(key);
     }
 
-    public static void delete(String key) {
-        Hawk.delete(key);
+    public static void delete(String... keys) {
+        for (String key : keys) Hawk.delete(key);
     }
 
     public static void deleteAll() {
