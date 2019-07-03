@@ -8,6 +8,7 @@ import androidx.annotation.IntRange;
 import com.chad.library.adapter.base.BaseViewHolder;
 import razerdp.basepopup.BasePopupWindow;
 import win.zwping.code.utils.ScreenUtil;
+import win.zwping.code.utils.ToastUtil;
 
 public abstract class BasePop extends BasePopupWindow {
 
@@ -58,6 +59,12 @@ public abstract class BasePop extends BasePopupWindow {
 
     public static int getScreenHeight(float percentage) {
         return Math.round(ScreenUtil.getScreenHeight() * percentage);
+    }
+
+    //////////////////////////////////////////////
+
+    public void showToast(Object o) {
+        ToastUtil.showShort(o + "");
     }
 
     //////////////////////////////////////////////
