@@ -94,6 +94,7 @@ public final class RxBusUtil {
             }
         });
     }
+
     public static void subscribeStickyS(Object o, String tag, final RxBusCallback<String> callback) {
         RxBus.getDefault().subscribeSticky(o, tag, new RxBus.Callback<String>() {
             @Override
@@ -148,6 +149,20 @@ public final class RxBusUtil {
         });
     }
 
+    public static <T> void subscribe(Object o, String tag, final RxBus.Callback<T> callback) {
+        RxBus.getDefault().subscribe(o, tag, callback);
+    }
+
+    public static <T> void subscribe(Object o, final RxBus.Callback<T> callback) {
+        RxBus.getDefault().subscribe(o, callback);
+    }
+    public static <T> void subscribeSticky(Object o, String tag, final RxBus.Callback<T> callback) {
+        RxBus.getDefault().subscribeSticky(o, tag, callback);
+    }
+
+    public static <T> void subscribeSticky(Object o, final RxBus.Callback<T> callback) {
+        RxBus.getDefault().subscribeSticky(o, callback);
+    }
     //////////////////////////////
 
 }
