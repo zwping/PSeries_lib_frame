@@ -2,6 +2,7 @@ package win.zwping.frame;
 
 import android.content.Context;
 
+import androidx.annotation.Nullable;
 import com.blankj.rxbus.RxBus;
 import com.orhanobut.hawk.Hawk;
 import win.zwping.code.Util;
@@ -27,6 +28,7 @@ public class HawkUtil {
         return Hawk.put(key, value);
     }
 
+    @Nullable
     public static String getString(String key) {
         return Hawk.get(key, null);
     }
