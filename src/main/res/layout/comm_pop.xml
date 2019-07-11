@@ -64,18 +64,11 @@
             android:layout_marginTop="10dp"
             app:layout_constraintTop_toBottomOf="@id/content_rl">
 
-            <View
-                android:id="@+id/h_line_v"
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="#666"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <win.zwping.code.review.PTextView
                 android:id="@+id/cancel_ptv"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="?android:attr/selectableItemBackground"
+                app:p_pressed_bg_color="#f5f5f5"
                 android:clickable="true"
                 android:gravity="center"
                 android:text="取消"
@@ -84,18 +77,13 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintWidth_percent="0.5" />
 
-            <View
-                android:id="@+id/line_v"
-                android:layout_width="0.5dp"
-                android:layout_height="match_parent"
-                android:background="#666"
-                app:layout_constraintLeft_toRightOf="@id/cancel_ptv" />
+
 
             <win.zwping.code.review.PTextView
                 android:id="@+id/confirm_ptv"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="?android:attr/selectableItemBackground"
+                app:p_pressed_bg_color="#f5f5f5"
                 android:clickable="true"
                 android:gravity="center"
                 android:text="确认"
@@ -103,6 +91,18 @@
                 android:textSize="15dp"
                 app:layout_constraintLeft_toRightOf="@id/cancel_ptv"
                 app:layout_constraintRight_toRightOf="parent" />
+            <View
+                    android:id="@+id/h_line_v"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#666"
+                    app:layout_constraintTop_toTopOf="parent" />
+            <View
+                    android:id="@+id/line_v"
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:background="#666"
+                    app:layout_constraintLeft_toRightOf="@id/cancel_ptv" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

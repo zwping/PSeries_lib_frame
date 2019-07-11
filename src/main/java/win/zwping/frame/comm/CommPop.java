@@ -62,7 +62,7 @@ public class CommPop extends BasePopupWindow {
         return createPopupById(R.layout.comm_pop);
     }
 
-    public CommPop setIsInput(){
+    public CommPop setIsInput() {
         setIsInput(true);
         return this;
     }
@@ -147,7 +147,7 @@ public class CommPop extends BasePopupWindow {
         cancelPtv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                lis.onCancel();
+                lis.onCancel(CommPop.this);
             }
         });
         return this;
@@ -185,7 +185,7 @@ public class CommPop extends BasePopupWindow {
     }
 
     public interface OnCancelClickListener {
-        void onCancel();
+        void onCancel(CommPop pop);
     }
 
     public interface OnHandleOjListener {
