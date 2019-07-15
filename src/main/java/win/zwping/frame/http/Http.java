@@ -4,6 +4,8 @@ import android.app.Application;
 import androidx.annotation.Nullable;
 import com.lzy.okgo.OkGo;
 
+import java.io.File;
+
 /**
  * <p>describe：
  * <p>    note：

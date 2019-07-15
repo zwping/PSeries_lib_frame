@@ -3,6 +3,7 @@ package win.zwping.frame.http;
 import androidx.annotation.Nullable;
 import com.alibaba.fastjson.JSON;
 import com.lzy.okgo.cache.CacheMode;
+import com.lzy.okgo.callback.FileCallback;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.exception.StorageException;
 import com.lzy.okgo.model.Response;
@@ -54,7 +55,7 @@ public class Build<B extends HttpBean> {
     private OnStdErrorListener<B> onStdErrorListener;
     private OnErrorListener<B> onErrorListener;
 
-    Build(Request request, B bean) {
+    Build(Request request, @Nullable B bean) {
         this.request = request;
         this.bean = bean;
     }
