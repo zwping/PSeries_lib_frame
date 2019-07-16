@@ -37,6 +37,7 @@ public class CommPop extends BasePopupWindow {
         contentPet = findViewById(R.id.content_pet);
         contentPtv = findViewById(R.id.content_ptv);
         cancelPtv = findViewById(R.id.cancel_ptv);
+        cancelPtv.setVisibility(View.VISIBLE);
         confirmPtv = findViewById(R.id.confirm_ptv);
         line = findViewById(R.id.line_v);
         hLine = findViewById(R.id.h_line_v);
@@ -104,6 +105,7 @@ public class CommPop extends BasePopupWindow {
 
     public CommPop setCancelHide() {
         cancelPtv.setVisibility(GONE);
+        line.setVisibility(GONE);
         return this;
     }
 
@@ -113,7 +115,7 @@ public class CommPop extends BasePopupWindow {
     }
 
     public CommPop setOutsideDismiss() {  // 逆默认值
-        setOutsideDismiss(true);
+        setOutsideDismiss(false);
         return this;
     }
 
