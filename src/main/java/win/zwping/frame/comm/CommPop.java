@@ -41,17 +41,9 @@ public class CommPop extends BasePopupWindow {
         confirmPtv = findViewById(R.id.confirm_ptv);
         line = findViewById(R.id.line_v);
         hLine = findViewById(R.id.h_line_v);
-        exitPiv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-            }
-        });
-        cancelPtv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (autoCancel) dismiss();
-            }
+        exitPiv.setOnClickListener(v -> dismiss());
+        cancelPtv.setOnClickListener(v -> {
+            if (autoCancel) dismiss();
         });
 
         setAllowDismissWhenTouchOutside(false);
@@ -146,22 +138,12 @@ public class CommPop extends BasePopupWindow {
 
     public CommPop setCancelLis(final OnCancelClickListener lis) {
         autoCancel = false;
-        cancelPtv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                lis.onCancel(CommPop.this);
-            }
-        });
+        cancelPtv.setOnClickListener(v -> lis.onCancel(CommPop.this));
         return this;
     }
 
     public CommPop setConfirmLis(final OnConfirmClickListener lis) {
-        confirmPtv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                lis.onConfirm(CommPop.this, contentPet.getContent());
-            }
-        });
+        confirmPtv.setOnClickListener(v -> lis.onConfirm(CommPop.this, contentPet.getContent()));
         return this;
     }
 
