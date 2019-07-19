@@ -46,7 +46,7 @@ public class CommPop extends BasePopupWindow {
             if (autoCancel) dismiss();
         });
 
-        setAllowDismissWhenTouchOutside(false);
+        // setAllowDismissWhenTouchOutside(false);
     }
 
 
