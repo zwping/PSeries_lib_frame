@@ -117,7 +117,7 @@ public class CommPop extends BasePopupWindow {
     }
 
     public CommPop setBackPressDismiss() { // 逆默认值
-        setBackPressDismiss(true);
+        setBackPressDismiss(false);
         return this;
     }
 
