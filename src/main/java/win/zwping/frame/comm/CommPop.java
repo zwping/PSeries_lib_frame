@@ -157,6 +157,16 @@ public class CommPop extends BasePopupWindow {
         return this;
     }
 
+    public CommPop setOnDismissLis(OnDismissLis lis) {
+        setOnDismissListener(new OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                lis.onDismiss();
+            }
+        });
+        return this;
+    }
+
 
     public void show() {
         showPopupWindow();
@@ -178,5 +188,9 @@ public class CommPop extends BasePopupWindow {
 
     public interface OnHandleViewListener {
         void onHandle(View view);
+    }
+
+    public interface OnDismissLis {
+        void onDismiss();
     }
 }
