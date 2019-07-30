@@ -2,6 +2,7 @@ package win.zwping.frame.http;
 
 import androidx.annotation.Nullable;
 import com.alibaba.fastjson.JSON;
+import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cache.CacheMode;
 import com.lzy.okgo.callback.FileCallback;
 import com.lzy.okgo.callback.StringCallback;
@@ -9,6 +10,9 @@ import com.lzy.okgo.exception.StorageException;
 import com.lzy.okgo.model.Response;
 import com.lzy.okgo.request.PostRequest;
 import com.lzy.okgo.request.base.Request;
+import okhttp3.Call;
+import okhttp3.Dispatcher;
+import win.zwping.code.utils.HandlerUtil;
 import win.zwping.code.utils.LogUtil;
 import win.zwping.code.utils.ToastUtil;
 import win.zwping.frame.http.lis.OnErrorListener;
@@ -160,6 +164,12 @@ public class Build<B extends HttpBean> {
     }
 
     /////////////////////////////////
+
+//    public void init(int delayMillis) {
+//        HandlerUtil.runOnUiThreadDelay(() -> {
+//            execute();
+//        }, delayMillis);
+//    }
 
     public void init() {
         execute();
