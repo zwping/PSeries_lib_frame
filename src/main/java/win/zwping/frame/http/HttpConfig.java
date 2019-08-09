@@ -1,6 +1,7 @@
 package win.zwping.frame.http;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 /**
  * <p>describe：
@@ -9,7 +10,7 @@ import androidx.annotation.NonNull;
  */
 public interface HttpConfig<B extends HttpBean> {
 
-    void showProgress(Object tag);
+    void showProgress(Object tag,@Nullable CharSequence loadingTxt);
 
     void hideProgress(Object tag);
 

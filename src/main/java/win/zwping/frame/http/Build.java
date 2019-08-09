@@ -48,6 +48,7 @@ public class Build<B extends HttpBean> {
     private int requestNum = 0; // 同个界面多个请求的序列
     private Boolean hasRefresh = false; // 刷新解耦
     private Boolean autoShowLoading = false;
+    private CharSequence autoShowLoadingTxt = null;
     private Boolean autoShowErrorMsg = true;
 
     private Boolean cacheSucDataToSuc = false; // 将读取缓存成功的数据通过OnSuccessListener输出
@@ -72,6 +73,18 @@ public class Build<B extends HttpBean> {
 
     public Build<B> setAutoLoading(Boolean autoShowLoading) {
         this.autoShowLoading = autoShowLoading;
+        return this;
+    }
+
+    public Build<B> setAutoLoading(CharSequence loadingTxt) {
+        this.autoShowLoading = true;
+        this.autoShowLoadingTxt = loadingTxt;
+        return this;
+    }
+
+    public Build<B> setAutoLoading(Boolean autoShowLoading, CharSequence loadingTxt) {
+        this.autoShowLoading = autoShowLoading;
+        this.autoShowLoadingTxt = loadingTxt;
         return this;
     }
 
@@ -177,7 +190,7 @@ public class Build<B extends HttpBean> {
 
     /////////////////////////////////
     private void execute() {
-        if (null != httpConfig && autoShowLoading) httpConfig.showProgress(request.getTag());
+        if (null != httpConfig && autoShowLoading) httpConfig.showProgress(request.getTag(), autoShowLoadingTxt);
         request.execute(new StringCallback() {
             @Override
             public void onSuccess(Response<String> response) {
