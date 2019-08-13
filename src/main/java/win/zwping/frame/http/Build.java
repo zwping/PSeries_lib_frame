@@ -103,7 +103,7 @@ public class Build<B extends HttpBean> {
         return this;
     }
 
-    public Build setAutoShowErrorMsg(Boolean autoShow) {
+    public Build<B> setAutoShowErrorMsg(Boolean autoShow) {
         this.autoShowErrorMsg = autoShow;
         return this;
     }

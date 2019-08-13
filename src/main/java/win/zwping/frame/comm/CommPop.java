@@ -12,9 +12,11 @@ import win.zwping.code.review.PEditText;
 import win.zwping.code.review.PImageView;
 import win.zwping.code.review.PTextView;
 import win.zwping.code.utils.ScreenUtil;
+import win.zwping.code.utils.ViewUtil;
 import win.zwping.frame.R;
 
 import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
 
 /**
  * <p>describe：
@@ -25,19 +27,23 @@ public class CommPop extends BasePopupWindow {
 
     protected PImageView exitPiv;
     protected PEditText contentPet;
-    protected PTextView contentPtv, cancelPtv, confirmPtv;
-    protected View line, hLine;
+    protected PTextView titlePtv, contentPtv, cancelPtv, confirmPtv;
+    protected View line, hLine, titleLineV;
+    protected RelativeLayout contentLy;
 
     private boolean autoCancel = true;
 
     public CommPop(Context context) {
         super(context, (int) (ScreenUtil.getScreenWidth() * 0.75), ViewGroup.LayoutParams.WRAP_CONTENT);
         setPopupGravity(Gravity.CENTER);
+        titlePtv = findViewById(R.id.title_ptv);
+        titleLineV = findViewById(R.id.title_live_v);
+        contentLy = findViewById(R.id.content_rl);
         exitPiv = findViewById(R.id.exit_piv);
         contentPet = findViewById(R.id.content_pet);
         contentPtv = findViewById(R.id.content_ptv);
         cancelPtv = findViewById(R.id.cancel_ptv);
-        cancelPtv.setVisibility(View.VISIBLE);
+        cancelPtv.setVisibility(VISIBLE);
         confirmPtv = findViewById(R.id.confirm_ptv);
         line = findViewById(R.id.line_v);
         hLine = findViewById(R.id.h_line_v);
@@ -55,14 +61,21 @@ public class CommPop extends BasePopupWindow {
         return createPopupById(R.layout.comm_pop);
     }
 
+    public CommPop setTitle(String title) {
+        ViewUtil.setVisible(titlePtv, titleLineV);
+        contentLy.setGravity(Gravity.START | Gravity.TOP);
+        titlePtv.setText(title);
+        return this;
+    }
+
     public CommPop setIsInput() {
         setIsInput(true);
         return this;
     }
 
     public CommPop setIsInput(Boolean input) {
-        contentPet.setVisibility(input ? View.VISIBLE : GONE);
-        contentPtv.setVisibility(input ? GONE : View.VISIBLE);
+        contentPet.setVisibility(input ? VISIBLE : GONE);
+        contentPtv.setVisibility(input ? GONE : VISIBLE);
         return this;
     }
 
@@ -96,13 +109,18 @@ public class CommPop extends BasePopupWindow {
     }
 
     public CommPop setCancelHide() {
-        cancelPtv.setVisibility(GONE);
-        line.setVisibility(GONE);
+        setCancelHide(true);
+        return this;
+    }
+
+    public CommPop setCancelHide(Boolean hasGone) {
+        cancelPtv.setVisibility(hasGone ? GONE : VISIBLE);
+        line.setVisibility(hasGone ? GONE : VISIBLE);
         return this;
     }
 
     public CommPop setShowExit() {
-        exitPiv.setVisibility(View.VISIBLE);
+        exitPiv.setVisibility(VISIBLE);
         return this;
     }
 
