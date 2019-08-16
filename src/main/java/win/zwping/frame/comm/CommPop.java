@@ -104,6 +104,7 @@ public class CommPop extends BasePopupWindow {
         RelativeLayout rl = findViewById(R.id.content_rl);
         for (int i = 0; i < rl.getChildCount(); i++)
             rl.getChildAt(i).setVisibility(GONE);
+        view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         rl.addView(view);
         return this;
     }
