@@ -176,6 +176,15 @@ public class Build<B extends HttpBean> {
         return this;
     }
 
+    public Build<B> handleRequestLis(OnRequestLis lis) {
+        lis.onRequest(request);
+        return this;
+    }
+
+    public interface OnRequestLis {
+        void onRequest(Request r);
+    }
+
     /////////////////////////////////
 
 //    public void init(int delayMillis) {
