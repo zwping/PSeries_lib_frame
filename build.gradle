@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
 
 def cfg = rootProject.ext
 
@@ -36,5 +38,10 @@ dependencies {
     api 'com.yanzhenjie.permission:x:2.0.1' // 几乎兼容了国内所有机型的权限申请框架
     api 'com.orhanobut:hawk:2.0.1'  // 替换sharePreferences，且加密保存（能存对象）
     api 'com.alibaba:fastjson:1.1.71.android'
-    api 'com.blankj:rxbus:1.6' // 不能忍受注解式开发
+    api 'com.blankj:rxbus:1.6'
+    api 'androidx.core:core-ktx:1.0.2'
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }

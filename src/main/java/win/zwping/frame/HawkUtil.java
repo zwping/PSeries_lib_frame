@@ -32,6 +32,10 @@ public class HawkUtil {
     public static String getString(String key) {
         return Hawk.get(key, null);
     }
+    @Nullable
+    public static String getStr(String key) {
+        return Hawk.get(key, null);
+    }
 
     public static int getInt(String key) {
         return Hawk.get(key, -1);
