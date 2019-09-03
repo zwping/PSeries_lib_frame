@@ -22,22 +22,12 @@ public abstract class BasePop extends BasePopupWindow {
     //////////////////////////////////////////////
 
     public void setOnClickLis(int id, final View.OnClickListener lis) {
-        findViewById(id).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                lis.onClick(v);
-            }
-        });
+        findViewById(id).setOnClickListener(v -> lis.onClick(v));
     }
 
     public void setOnDismiss(int... ids) {
         for (int id : ids) {
-            findViewById(id).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dismiss();
-                }
-            });
+            findViewById(id).setOnClickListener(v -> dismiss());
         }
     }
 
