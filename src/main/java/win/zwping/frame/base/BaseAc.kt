@@ -24,7 +24,7 @@ abstract class BaseAc : BasicAc() {
         if (loading == null) loading = LoadingPop(this)
         loading?.also {
             runOnUiThread {
-                txt?.also { t -> it.setTxt(t) }
+                it.setTxt(txt)
                 if (!it.isShowing) it.showPopupWindow()
             }
         }
