@@ -5,8 +5,10 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+
 import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
+
 import razerdp.basepopup.BasePopupWindow;
 import win.zwping.code.review.PEditText;
 import win.zwping.code.review.PImageView;
@@ -63,7 +65,8 @@ public class CommPop extends BasePopupWindow {
 
     public CommPop setTitle(String title) {
         ViewUtil.setVisible(titlePtv, titleLineV);
-        contentLy.setGravity(Gravity.START | Gravity.TOP);
+        contentLy.setGravity(Gravity.START | Gravity.CENTER_VERTICAL);
+        contentPet.setGravity(Gravity.START);
         titlePtv.setText(title);
         return this;
     }

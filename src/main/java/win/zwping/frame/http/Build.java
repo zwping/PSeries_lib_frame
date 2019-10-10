@@ -60,6 +60,8 @@ public class Build<B extends HttpBean> {
     private OnStdErrorListener<B> onStdErrorListener;
     private OnErrorListener<B> onErrorListener;
 
+    private Boolean executeFilter  = true; // 是否执行
+
     Build(Request request, @Nullable B bean) {
         this.request = request;
         this.bean = bean;
@@ -121,6 +123,15 @@ public class Build<B extends HttpBean> {
     public Build<B> cacheSucToSuc() {
         cacheSucDataToSuc = true;
         return this;
+    }
+
+    public Build<B> executeFilter(HttpExecuteFilter filter){
+        executeFilter = filter.filter();
+        return this;
+    }
+
+    public interface HttpExecuteFilter{
+        boolean filter();
     }
 
     ////////////////////////////
@@ -193,12 +204,17 @@ public class Build<B extends HttpBean> {
 //        }, delayMillis);
 //    }
 
+    /**
+     * @deprecated {@link #execute()}
+     */
+    @Deprecated
     public void init() {
         execute();
     }
 
     /////////////////////////////////
-    private void execute() {
+    public void execute() {
+        if(!executeFilter) return;
         if (null != httpConfig && autoShowLoading) httpConfig.showProgress(request.getTag(), autoShowLoadingTxt);
         request.execute(new StringCallback() {
             @Override
