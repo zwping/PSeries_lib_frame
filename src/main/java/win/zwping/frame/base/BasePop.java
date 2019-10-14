@@ -2,11 +2,15 @@ package win.zwping.frame.base;
 
 import android.content.Context;
 import android.view.View;
+
 import androidx.annotation.FloatRange;
 import androidx.annotation.IntDef;
 import androidx.annotation.IntRange;
+
 import com.chad.library.adapter.base.BaseViewHolder;
+
 import razerdp.basepopup.BasePopupWindow;
+import win.zwping.code.comm.CommCallback;
 import win.zwping.code.utils.ScreenUtil;
 import win.zwping.code.utils.ToastUtil;
 
@@ -41,6 +45,16 @@ public abstract class BasePop extends BasePopupWindow {
         for (int id : ids) {
             findViewById(id).setVisibility(View.VISIBLE);
         }
+    }
+
+    public BasePop setOnDismissLis(CommCallback<BasePop> callback) {
+        setOnDismissListener(new OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                callback.callback(null);
+            }
+        });
+        return this;
     }
 
     public static int getScreenWidth(float percentage) {
