@@ -2,20 +2,20 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 
-apply plugin: 'com.github.dcendents.android-maven'
-group='com.github.zwping'
+//apply plugin: 'com.github.dcendents.android-maven'
+//group='com.github.zwping'
 
 def cfg = rootProject.ext
 
 android {
 
-    compileSdkVersion cfg.compileSdkVersion
+    compileSdkVersion 29
 
     defaultConfig {
-        minSdkVersion cfg.minSdkVersion
-        targetSdkVersion cfg.targetSdkVersion
-        versionCode cfg.versionCode
-        versionName cfg.versionName_code
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
     }
 
     buildTypes {
@@ -42,7 +42,7 @@ dependencies {
     api 'com.orhanobut:hawk:2.0.1'  // 替换sharePreferences，且加密保存（能存对象）
     api 'com.alibaba:fastjson:1.1.71.android'
     api 'com.blankj:rxbus:1.6'
-    api 'androidx.core:core-ktx:1.0.2'
+    api 'androidx.core:core-ktx:1.1.0'
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 repositories {
