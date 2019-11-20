@@ -38,7 +38,7 @@ dependencies {
 
     api 'com.lzy.net:okgo:3.0.4'
     api 'com.github.razerdp:BasePopup:2.1.9'
-    api 'com.yanzhenjie.permission:x:2.0.1' // 几乎兼容了国内所有机型的权限申请框架
+    api 'com.yanzhenjie:permission:2.0.3' // 几乎兼容了国内所有机型的权限申请框架
     api 'com.orhanobut:hawk:2.0.1'  // 替换sharePreferences，且加密保存（能存对象）
     api 'com.alibaba:fastjson:1.1.71.android'
     api 'com.blankj:rxbus:1.6'
