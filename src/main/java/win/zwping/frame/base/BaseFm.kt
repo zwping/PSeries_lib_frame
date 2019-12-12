@@ -16,7 +16,7 @@ abstract class BaseFm : BasicFm() {
 
     override fun onCreateViewLazy(savedInstanceState: Bundle?) {
         super.onCreateViewLazy(savedInstanceState)
-        val ac1 = getAc()
+        val ac1 = mActivity
         this.ac = if (ac1 is BaseAc) ac1 else null
     }
 

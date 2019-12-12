@@ -1,6 +1,7 @@
 package win.zwping.frame.base
 
 import win.zwping.code.basic.BasicAc
+import win.zwping.code.comm.CommCallback
 import win.zwping.frame.RxBusUtil
 import win.zwping.frame.comm.LoadingPop
 import win.zwping.frame.http.Http
