@@ -1,30 +1,27 @@
 package win.zwping.frame.http;
 
 import androidx.annotation.Nullable;
+
 import com.alibaba.fastjson.JSON;
-import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cache.CacheMode;
-import com.lzy.okgo.callback.FileCallback;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.exception.StorageException;
 import com.lzy.okgo.model.Response;
 import com.lzy.okgo.request.PostRequest;
 import com.lzy.okgo.request.base.Request;
-import okhttp3.Call;
-import okhttp3.Dispatcher;
-import win.zwping.code.utils.HandlerUtil;
-import win.zwping.code.utils.LogUtil;
-import win.zwping.code.utils.ToastUtil;
-import win.zwping.frame.http.lis.OnErrorListener;
-import win.zwping.frame.http.lis.OnStdErrorListener;
-import win.zwping.frame.http.lis.OnStdSuccessListener;
-import win.zwping.frame.http.lis.OnSuccessListener;
 
 import java.io.File;
 import java.lang.reflect.Type;
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
+
+import win.zwping.code.utils.LogUtil;
+import win.zwping.code.utils.ToastUtil;
+import win.zwping.frame.http.lis.OnErrorListener;
+import win.zwping.frame.http.lis.OnStdErrorListener;
+import win.zwping.frame.http.lis.OnStdSuccessListener;
+import win.zwping.frame.http.lis.OnSuccessListener;
 
 import static win.zwping.code.utils.EmptyUtil.isNotEmpty;
 
@@ -60,7 +57,7 @@ public class Build<B extends HttpBean> {
     private OnStdErrorListener<B> onStdErrorListener;
     private OnErrorListener<B> onErrorListener;
 
-    private Boolean executeFilter  = true; // 是否执行
+    private Boolean executeFilter = true; // 是否执行
 
     Build(Request request, @Nullable B bean) {
         this.request = request;
@@ -125,12 +122,12 @@ public class Build<B extends HttpBean> {
         return this;
     }
 
-    public Build<B> executeFilter(HttpExecuteFilter filter){
+    public Build<B> executeFilter(HttpExecuteFilter filter) {
         executeFilter = filter.filter();
         return this;
     }
 
-    public interface HttpExecuteFilter{
+    public interface HttpExecuteFilter {
         boolean filter();
     }
 
@@ -214,15 +211,17 @@ public class Build<B extends HttpBean> {
 
     /////////////////////////////////
     public void execute() {
-        if(!executeFilter) return;
-        if (null != httpConfig && autoShowLoading) httpConfig.showProgress(request.getTag(), autoShowLoadingTxt);
+        if (!executeFilter) return;
+        if (null != httpConfig && autoShowLoading)
+            httpConfig.showProgress(request.getTag(), autoShowLoadingTxt);
         request.execute(new StringCallback() {
             @Override
             public void onSuccess(Response<String> response) {
-                if (null != httpConfig && autoShowLoading) httpConfig.hideProgress(request.getTag());
+                if (null != httpConfig && autoShowLoading)
+                    httpConfig.hideProgress(request.getTag());
                 try {
                     bean = JSON.parseObject(response.body(), (Type) bean.getClass());
-                    if (null != httpConfig) httpConfig.onSuccess(Build.this);
+                    if (null != httpConfig) httpConfig.onSuccess(Build.this, response);
                     else setSuccessListener();
 //                        // 真正需要自定义的应该是这里，每个团队对于状态码的把控的都不一样
 //                        // Eg：Token过期... 可以直接在这处理逻辑
@@ -239,7 +238,7 @@ public class Build<B extends HttpBean> {
                     e.printStackTrace();
                     LogUtil.i("数据解析错误：" + e.getMessage());
                     if (autoShowErrorMsg) ToastUtil.showShort("数据错误，请重试！");
-                    if (null != httpConfig) httpConfig.onError(Build.this);
+                    if (null != httpConfig) httpConfig.onError(Build.this, response);
                     else setErrorListener();
                 }
             }
@@ -247,7 +246,8 @@ public class Build<B extends HttpBean> {
             @Override
             public void onCacheSuccess(Response<String> response) {
                 super.onCacheSuccess(response);
-                if (null != httpConfig && autoShowLoading) httpConfig.hideProgress(request.getTag());
+                if (null != httpConfig && autoShowLoading)
+                    httpConfig.hideProgress(request.getTag());
                 try {
                     bean = JSON.parseObject(response.body(), (Type) bean.getClass());
                     if (null != httpConfig) httpConfig.onCacheSuccess(Build.this);
@@ -265,7 +265,8 @@ public class Build<B extends HttpBean> {
             public void onError(Response<String> response) {
                 super.onError(response);
                 LogUtil.i("网络请求出错：" + response.message());
-                if (null != httpConfig && autoShowLoading) httpConfig.hideProgress(request.getTag());
+                if (null != httpConfig && autoShowLoading)
+                    httpConfig.hideProgress(request.getTag());
 
                 if (autoShowErrorMsg) {
                     Throwable ex = response.getException();
@@ -279,7 +280,7 @@ public class Build<B extends HttpBean> {
                         ToastUtil.showShort("服务器错误！");
                     }
                 }
-                if (null != httpConfig) httpConfig.onError(Build.this);
+                if (null != httpConfig) httpConfig.onError(Build.this, response);
                 else setErrorListener();
             }
         });
@@ -288,12 +289,14 @@ public class Build<B extends HttpBean> {
     /////////// 方法封装 /////////////////
 
     public void setSuccessListener() {
-        if (null != onStdSuccessListener) onStdSuccessListener.onSuccess(requestNum, hasRefresh, bean);
+        if (null != onStdSuccessListener)
+            onStdSuccessListener.onSuccess(requestNum, hasRefresh, bean);
         if (null != onSuccessListener) onSuccessListener.onSuccess(bean);
     }
 
     public void setCacheSuccessListener() {
-        if (null != onStdCacheSuccessListener) onStdCacheSuccessListener.onSuccess(requestNum, hasRefresh, bean);
+        if (null != onStdCacheSuccessListener)
+            onStdCacheSuccessListener.onSuccess(requestNum, hasRefresh, bean);
         if (null != onCacheSuccessListener) onCacheSuccessListener.onSuccess(bean);
         if (cacheSucDataToSuc) setSuccessListener();
     }

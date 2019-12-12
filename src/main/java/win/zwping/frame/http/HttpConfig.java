@@ -3,6 +3,8 @@ package win.zwping.frame.http;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.lzy.okgo.model.Response;
+
 /**
  * <p>describe：
  * <p>    note：
@@ -14,11 +16,21 @@ public interface HttpConfig<B extends HttpBean> {
 
     void hideProgress(Object tag);
 
-    void onSuccess(@NonNull Build<B> build);
+    /**
+     *
+     * @param build
+     * @param rawResponse
+     */
+    void onSuccess(@NonNull Build<B> build,@Nullable Response<String> rawResponse);
 
     void onCacheSuccess(@NonNull Build<B> build);
 
-    void onError(@NonNull Build<B> build);
+    /**
+     *
+     * @param build
+     * @param rawResponse
+     */
+    void onError(@NonNull Build<B> build,@Nullable Response<String> rawResponse);
 
 
 }
