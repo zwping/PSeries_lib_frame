@@ -12,7 +12,7 @@ import win.zwping.frame.http.Http
  */
 abstract class BaseFm : BasicFm() {
 
-    private var ac: BaseAc? = null
+    protected var ac: BaseAc? = null
 
     override fun onCreateViewLazy(savedInstanceState: Bundle?) {
         super.onCreateViewLazy(savedInstanceState)
