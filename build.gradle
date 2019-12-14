@@ -39,6 +39,7 @@ android {
 
 dependencies {
     api project(':plib_code')
+    api 'android.arch.lifecycle:extensions:1.1.1'
 
     api 'com.lzy.net:okgo:3.0.4'
     api 'com.github.razerdp:BasePopup:2.1.9'
