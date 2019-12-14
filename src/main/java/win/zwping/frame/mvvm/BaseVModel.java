@@ -1,12 +1,15 @@
 package win.zwping.frame.mvvm;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 
 import java.lang.reflect.ParameterizedType;
+
+import win.zwping.code.comm.CommCallback;
 
 /**
  * 基础的ViewModel <br />
@@ -21,6 +24,7 @@ public abstract class BaseVModel<Bean> extends ViewModel {
      * 如需更多的共享数据，可在派生类中自定义
      */
     public MutableLiveData<Bean> liveData;
+    private Bean __bean;
 
     public BaseVModel() {
         this.liveData = new MutableLiveData<>();
@@ -33,18 +37,40 @@ public abstract class BaseVModel<Bean> extends ViewModel {
         }
     }
 
-    public BaseVModel<Bean> setBean(Bean bean) {
-        liveData.setValue(bean);
+    /**
+     * 设置实体，更新数据
+     *
+     * @param bean
+     * @return
+     */
+    public BaseVModel<Bean> setBean(@Nullable Bean bean) {
+        if (bean != null) liveData.setValue(__bean = bean);
         return this;
     }
 
-    public BaseVModel<Bean> setPostBean(Bean bean) {
-        liveData.postValue(bean);
+    /**
+     * 设置实体，更新数据视图
+     *
+     * @param bean
+     * @return
+     */
+    public BaseVModel<Bean> setPostBean(@Nullable Bean bean) {
+        if (bean != null) liveData.postValue(__bean = bean);
         return this;
     }
 
     public Bean getBean() {
         return liveData.getValue();
+    }
+
+    public void clearBean() {
+        try {
+            ParameterizedType type = (ParameterizedType) this.getClass().getGenericSuperclass();
+            Class clazz = (Class<Bean>) type.getActualTypeArguments()[0];
+            setBean((Bean) clazz.newInstance());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -57,6 +83,12 @@ public abstract class BaseVModel<Bean> extends ViewModel {
      */
     public BaseVModel<Bean> observe(@NonNull LifecycleOwner owner, @NonNull Observer<Bean> observer) {
         liveData.observe(owner, observer);
+        return this;
+    }
+
+    public BaseVModel<Bean> notifyChange(CommCallback<Bean> callback) {
+        callback.callback(__bean);
+        setBean(__bean);
         return this;
     }
 }
