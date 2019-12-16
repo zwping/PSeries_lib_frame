@@ -194,6 +194,11 @@ public class CommPop extends BasePopupWindow {
         showPopupWindow();
     }
 
+    public void show(boolean showOrDismiss) {
+        if (showOrDismiss) showPopupWindow();
+        else dismiss();
+    }
+
     ///////////////////////////
 
     public interface OnConfirmClickListener {
