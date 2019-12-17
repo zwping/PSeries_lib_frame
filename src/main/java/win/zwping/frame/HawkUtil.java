@@ -3,8 +3,10 @@ package win.zwping.frame;
 import android.content.Context;
 
 import androidx.annotation.Nullable;
+
 import com.blankj.rxbus.RxBus;
 import com.orhanobut.hawk.Hawk;
+
 import win.zwping.code.Util;
 
 import java.util.List;
@@ -28,10 +30,17 @@ public class HawkUtil {
         return Hawk.put(key, value);
     }
 
+    /**
+     * @param key
+     * @return
+     * @deprecated {@link #getStr(String)}
+     */
     @Nullable
+    @Deprecated
     public static String getString(String key) {
         return Hawk.get(key, null);
     }
+
     @Nullable
     public static String getStr(String key) {
         return Hawk.get(key, null);
