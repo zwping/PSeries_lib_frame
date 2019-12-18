@@ -33,7 +33,7 @@ abstract class BaseAc : BasicAc() {
 
     fun hideProgress() {
         loading?.also {
-            runOnUiThread { if (it.isShowing) it.dismiss() }
+            runOnUiThread { it.dismiss() }
         }
     }
 
