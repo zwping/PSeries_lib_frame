@@ -1,5 +1,8 @@
 package win.zwping.frame;
 
+import androidx.annotation.Nullable;
+import androidx.lifecycle.LifecycleOwner;
+
 import com.blankj.rxbus.RxBus;
 import win.zwping.frame.lis.RxBusCallback;
 
@@ -164,5 +167,4 @@ public final class RxBusUtil {
         RxBus.getDefault().subscribeSticky(o, callback);
     }
     //////////////////////////////
-
 }

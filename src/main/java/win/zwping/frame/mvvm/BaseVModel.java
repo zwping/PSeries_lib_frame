@@ -18,6 +18,14 @@ import static win.zwping.code.utils.EmptyUtil.isNotEmpty;
 /**
  * 基础的ViewModel <br />
  * 如需多个界面共享一个数据，可将派生类变换为单例类
+ * <p>
+ * 观察者模式
+ * liveData :  可感知数据变化的对象
+ * viewModel:  在生命周期内存储数据(如果以App生命周期存储，只需将viewModel单例化)
+ * </p>
+ * <p>
+ * liveData更重要的是: 感知组件的生命周期(ViewModelProviders.of(this)...)
+ * </p>
  *
  * @param <Bean>
  */
