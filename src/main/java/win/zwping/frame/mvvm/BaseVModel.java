@@ -125,6 +125,12 @@ public abstract class BaseVModel<Bean> extends ViewModel implements IVModel {
         return this;
     }
 
+    /**
+     * 更新数据，需要注意内部变量是否初始化
+     *
+     * @param callback
+     * @return
+     */
     public BaseVModel<Bean> notifyChange(CommCallback<Bean> callback) {
         callback.callback(__bean);
         setBean(__bean);

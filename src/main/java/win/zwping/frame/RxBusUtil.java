@@ -13,8 +13,17 @@ import win.zwping.frame.lis.RxBusCallback;
  */
 public final class RxBusUtil {
 
+
     public static void unregister(Object o) {
         RxBus.getDefault().unregister(o);
+    }
+
+    public static void removeSticky(Object o) {
+        RxBus.getDefault().removeSticky(o);
+    }
+
+    public static void removeSticky(Object o, String tag) {
+        RxBus.getDefault().removeSticky(o, tag);
     }
 
 
@@ -32,14 +41,6 @@ public final class RxBusUtil {
 
     public static void postSticky(Object o, String tag) {
         RxBus.getDefault().postSticky(o, tag);
-    }
-
-    public static void removeSticky(Object o) {
-        RxBus.getDefault().removeSticky(o);
-    }
-
-    public static void removeSticky(Object o, String tag) {
-        RxBus.getDefault().removeSticky(o, tag);
     }
 
     //////////////////////////////
