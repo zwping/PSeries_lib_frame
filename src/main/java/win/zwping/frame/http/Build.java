@@ -3,6 +3,7 @@ package win.zwping.frame.http;
 import androidx.annotation.Nullable;
 
 import com.alibaba.fastjson.JSON;
+import com.google.gson.Gson;
 import com.lzy.okgo.cache.CacheMode;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.exception.StorageException;
@@ -220,6 +221,7 @@ public class Build<B extends HttpBean> {
                 if (null != httpConfig && autoShowLoading)
                     httpConfig.hideProgress(request.getTag());
                 try {
+//                    bean = new Gson().fromJson(response.body(), (Type) bean.getClass());
                     bean = JSON.parseObject(response.body(), (Type) bean.getClass());
                     if (null != httpConfig) httpConfig.onSuccess(Build.this, response);
                     else setSuccessListener();
