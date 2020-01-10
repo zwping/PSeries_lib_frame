@@ -4,9 +4,12 @@ import androidx.annotation.Nullable;
 
 import com.alibaba.fastjson.JSON;
 import com.google.gson.Gson;
+import com.google.gson.stream.JsonReader;
 import com.lzy.okgo.cache.CacheMode;
+import com.lzy.okgo.callback.Callback;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.exception.StorageException;
+import com.lzy.okgo.model.Progress;
 import com.lzy.okgo.model.Response;
 import com.lzy.okgo.request.PostRequest;
 import com.lzy.okgo.request.base.Request;
@@ -17,6 +20,7 @@ import java.net.ConnectException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 
+import okhttp3.ResponseBody;
 import win.zwping.code.utils.LogUtil;
 import win.zwping.code.utils.ToastUtil;
 import win.zwping.frame.http.lis.OnErrorListener;
@@ -221,6 +225,7 @@ public class Build<B extends HttpBean> {
                 if (null != httpConfig && autoShowLoading)
                     httpConfig.hideProgress(request.getTag());
                 try {
+//                    bean = new Gson().fromJson(new JsonReader(((ResponseBody) response.body()).charStream()), bean.getClass());
 //                    bean = new Gson().fromJson(response.body(), (Type) bean.getClass());
                     bean = JSON.parseObject(response.body(), (Type) bean.getClass());
                     if (null != httpConfig) httpConfig.onSuccess(Build.this, response);
