@@ -228,6 +228,7 @@ public class Build<B extends HttpBean> {
 //                    bean = new Gson().fromJson(new JsonReader(((ResponseBody) response.body()).charStream()), bean.getClass());
 //                    bean = new Gson().fromJson(response.body(), (Type) bean.getClass());
                     bean = JSON.parseObject(response.body(), (Type) bean.getClass());
+                    /* fastJson解析kotlinBean，其中int变量名包含_就无法解析 */
                     if (null != httpConfig) httpConfig.onSuccess(Build.this, response);
                     else setSuccessListener();
 //                        // 真正需要自定义的应该是这里，每个团队对于状态码的把控的都不一样
