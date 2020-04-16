@@ -27,11 +27,11 @@ import static android.view.View.VISIBLE;
  */
 public class CommPop extends BasePopupWindow {
 
-    protected PImageView exitPiv;
-    protected PEditText contentPet;
-    protected PTextView titlePtv, contentPtv, cancelPtv, confirmPtv;
-    protected View line, hLine, titleLineV;
-    protected RelativeLayout contentLy;
+    public PImageView exitPiv;
+    public PEditText contentPet;
+    public PTextView titlePtv, contentPtv, cancelPtv, confirmPtv;
+    public View line, hLine, titleLineV;
+    public RelativeLayout contentLy;
 
     private boolean autoCancel = true;
 
