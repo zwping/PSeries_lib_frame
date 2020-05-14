@@ -10,7 +10,7 @@ import win.zwping.frame.http.Http
 /**
  * <p>describe：
  * <p>    note：
- * <p> @author：zwp on 2019-05-08 11:43:02 mail：1101558280@qq.com web: http://www.zwping.win </p>
+ * <p> @author：zwp on 2019-05-08 11:43:02 mail：1101558280@qq.com web: https://www.zwping.com </p>
  */
 abstract class BaseAc : BasicAc() {
 
