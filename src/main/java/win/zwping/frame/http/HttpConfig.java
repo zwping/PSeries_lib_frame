@@ -8,7 +8,7 @@ import com.lzy.okgo.model.Response;
 /**
  * <p>describe：
  * <p>    note：
- * <p> @author：zwp on 2019-05-14 12:53:08 mail：1101558280@qq.com web: http://www.zwping.win </p>
+ * <p> @author：zwp on 2019-05-14 12:53:08 mail：1101558280@qq.com web: https://www.zwping.com </p>
  */
 public interface HttpConfig<B extends HttpBean> {
 

@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * <p>describe：替换SharedPreferences的框架
  * <p>    note：
- * <p> @author：zwp on 2019-04-12 10:19:04 mail：1101558280@qq.com web: http://www.zwping.win </p>
+ * <p> @author：zwp on 2019-04-12 10:19:04 mail：1101558280@qq.com web: https://www.zwping.com </p>
  */
 public class HawkUtil {
 

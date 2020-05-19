@@ -15,7 +15,7 @@ import static win.zwping.code.utils.EmptyUtil.isNotEmpty;
 /**
  * <p>describe：
  * <p>    note：
- * <p> @author：zwp on 2019-05-14 16:27:44 mail：1101558280@qq.com web: http://www.zwping.win </p>
+ * <p> @author：zwp on 2019-05-14 16:27:44 mail：1101558280@qq.com web: https://www.zwping.com </p>
  */
 public class LoadingPop extends BasePopupWindow {
 

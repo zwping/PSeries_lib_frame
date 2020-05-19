@@ -23,7 +23,7 @@ import static android.view.View.VISIBLE;
 /**
  * <p>describe：
  * <p>    note：
- * <p> @author：zwp on 2019-05-06 16:50:17 mail：1101558280@qq.com web: http://www.zwping.win </p>
+ * <p> @author：zwp on 2019-05-06 16:50:17 mail：1101558280@qq.com web: https://www.zwping.com </p>
  */
 public class CommPop extends BasePopupWindow {
 
