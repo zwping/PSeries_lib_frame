@@ -1,6 +1,6 @@
 package win.zwping.frame.base
 
-import com.gyf.barlibrary.ImmersionBar
+import com.gyf.immersionbar.ImmersionBar;
 import win.zwping.code.basic.BasicAc
 import win.zwping.code.comm.CommCallback
 import win.zwping.frame.RxBusUtil
