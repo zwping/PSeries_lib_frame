@@ -17,7 +17,7 @@ import static win.zwping.code.utils.EmptyUtil.isNotEmpty;
 
 /**
  * 基础的ViewModel <br />
- * 如需多个界面共享一个数据，可将派生类变换为单例类
+ * 如需多个界面共享一个数据(生命周期于Application)，可将派生类变换为单例类
  * <p>
  * 观察者模式
  * liveData :  可感知数据变化的对象
