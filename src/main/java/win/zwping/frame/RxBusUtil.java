@@ -14,10 +14,6 @@ import win.zwping.frame.lis.RxBusCallback;
 public final class RxBusUtil {
 
 
-    public static void unregister(Object o) {
-        RxBus.getDefault().unregister(o);
-    }
-
     public static void removeSticky(Object o) {
         RxBus.getDefault().removeSticky(o);
     }
@@ -45,8 +41,12 @@ public final class RxBusUtil {
 
     //////////////////////////////
 
-    public static void subscribeS(Object o, String tag, final RxBusCallback<String> callback) {
-        RxBus.getDefault().subscribe(o, tag, new RxBus.Callback<String>() {
+    public static void unregister(Object ctx) {
+        RxBus.getDefault().unregister(ctx);
+    }
+
+    public static void subscribeS(Object ctx, String tag, final RxBusCallback<String> callback) {
+        RxBus.getDefault().subscribe(ctx, tag, new RxBus.Callback<String>() {
             @Override
             public void onEvent(String s) {
                 callback.onEvent(s);
@@ -54,8 +54,8 @@ public final class RxBusUtil {
         });
     }
 
-    public static void subscribeI(Object o, String tag, final RxBusCallback<Integer> callback) {
-        RxBus.getDefault().subscribe(o, tag, new RxBus.Callback<Integer>() {
+    public static void subscribeI(Object ctx, String tag, final RxBusCallback<Integer> callback) {
+        RxBus.getDefault().subscribe(ctx, tag, new RxBus.Callback<Integer>() {
             @Override
             public void onEvent(Integer s) {
                 callback.onEvent(s);
@@ -63,8 +63,8 @@ public final class RxBusUtil {
         });
     }
 
-    public static void subscribeB(Object o, String tag, final RxBusCallback<Boolean> callback) {
-        RxBus.getDefault().subscribe(o, tag, new RxBus.Callback<Boolean>() {
+    public static void subscribeB(Object ctx, String tag, final RxBusCallback<Boolean> callback) {
+        RxBus.getDefault().subscribe(ctx, tag, new RxBus.Callback<Boolean>() {
             @Override
             public void onEvent(Boolean s) {
                 callback.onEvent(s);
@@ -72,8 +72,8 @@ public final class RxBusUtil {
         });
     }
 
-    public static void subscribeS(Object o, final RxBusCallback<String> callback) {
-        RxBus.getDefault().subscribe(o, new RxBus.Callback<String>() {
+    public static void subscribeS(Object ctx, final RxBusCallback<String> callback) {
+        RxBus.getDefault().subscribe(ctx, new RxBus.Callback<String>() {
             @Override
             public void onEvent(String s) {
                 callback.onEvent(s);
@@ -81,8 +81,8 @@ public final class RxBusUtil {
         });
     }
 
-    public static void subscribeI(Object o, final RxBusCallback<Integer> callback) {
-        RxBus.getDefault().subscribe(o, new RxBus.Callback<Integer>() {
+    public static void subscribeI(Object ctx, final RxBusCallback<Integer> callback) {
+        RxBus.getDefault().subscribe(ctx, new RxBus.Callback<Integer>() {
             @Override
             public void onEvent(Integer s) {
                 callback.onEvent(s);
@@ -90,8 +90,8 @@ public final class RxBusUtil {
         });
     }
 
-    public static void subscribeB(Object o, final RxBusCallback<Boolean> callback) {
-        RxBus.getDefault().subscribe(o, new RxBus.Callback<Boolean>() {
+    public static void subscribeB(Object ctx, final RxBusCallback<Boolean> callback) {
+        RxBus.getDefault().subscribe(ctx, new RxBus.Callback<Boolean>() {
             @Override
             public void onEvent(Boolean s) {
                 callback.onEvent(s);
@@ -99,8 +99,8 @@ public final class RxBusUtil {
         });
     }
 
-    public static void subscribeStickyS(Object o, String tag, final RxBusCallback<String> callback) {
-        RxBus.getDefault().subscribeSticky(o, tag, new RxBus.Callback<String>() {
+    public static void subscribeStickyS(Object ctx, String tag, final RxBusCallback<String> callback) {
+        RxBus.getDefault().subscribeSticky(ctx, tag, new RxBus.Callback<String>() {
             @Override
             public void onEvent(String s) {
                 callback.onEvent(s);
@@ -108,8 +108,8 @@ public final class RxBusUtil {
         });
     }
 
-    public static void subscribeStickyI(Object o, String tag, final RxBusCallback<Integer> callback) {
-        RxBus.getDefault().subscribeSticky(o, tag, new RxBus.Callback<Integer>() {
+    public static void subscribeStickyI(Object ctx, String tag, final RxBusCallback<Integer> callback) {
+        RxBus.getDefault().subscribeSticky(ctx, tag, new RxBus.Callback<Integer>() {
             @Override
             public void onEvent(Integer s) {
                 callback.onEvent(s);
@@ -117,8 +117,8 @@ public final class RxBusUtil {
         });
     }
 
-    public static void subscribeStickyB(Object o, String tag, final RxBusCallback<Boolean> callback) {
-        RxBus.getDefault().subscribeSticky(o, tag, new RxBus.Callback<Boolean>() {
+    public static void subscribeStickyB(Object ctx, String tag, final RxBusCallback<Boolean> callback) {
+        RxBus.getDefault().subscribeSticky(ctx, tag, new RxBus.Callback<Boolean>() {
             @Override
             public void onEvent(Boolean s) {
                 callback.onEvent(s);
@@ -126,8 +126,8 @@ public final class RxBusUtil {
         });
     }
 
-    public static void subscribeStickyS(Object o, final RxBusCallback<String> callback) {
-        RxBus.getDefault().subscribeSticky(o, new RxBus.Callback<String>() {
+    public static void subscribeStickyS(Object ctx, final RxBusCallback<String> callback) {
+        RxBus.getDefault().subscribeSticky(ctx, new RxBus.Callback<String>() {
             @Override
             public void onEvent(String s) {
                 callback.onEvent(s);
@@ -135,8 +135,8 @@ public final class RxBusUtil {
         });
     }
 
-    public static void subscribeStickyI(Object o, final RxBusCallback<Integer> callback) {
-        RxBus.getDefault().subscribeSticky(o, new RxBus.Callback<Integer>() {
+    public static void subscribeStickyI(Object ctx, final RxBusCallback<Integer> callback) {
+        RxBus.getDefault().subscribeSticky(ctx, new RxBus.Callback<Integer>() {
             @Override
             public void onEvent(Integer s) {
                 callback.onEvent(s);
@@ -144,8 +144,8 @@ public final class RxBusUtil {
         });
     }
 
-    public static void subscribeStickyB(Object o, final RxBusCallback<Boolean> callback) {
-        RxBus.getDefault().subscribeSticky(o, new RxBus.Callback<Boolean>() {
+    public static void subscribeStickyB(Object ctx, final RxBusCallback<Boolean> callback) {
+        RxBus.getDefault().subscribeSticky(ctx, new RxBus.Callback<Boolean>() {
             @Override
             public void onEvent(Boolean s) {
                 callback.onEvent(s);
@@ -153,19 +153,19 @@ public final class RxBusUtil {
         });
     }
 
-    public static <T> void subscribe(Object o, String tag, final RxBus.Callback<T> callback) {
-        RxBus.getDefault().subscribe(o, tag, callback);
+    public static <T> void subscribe(Object ctx, String tag, final RxBus.Callback<T> callback) {
+        RxBus.getDefault().subscribe(ctx, tag, callback);
     }
 
-    public static <T> void subscribe(Object o, final RxBus.Callback<T> callback) {
-        RxBus.getDefault().subscribe(o, callback);
+    public static <T> void subscribe(Object ctx, final RxBus.Callback<T> callback) {
+        RxBus.getDefault().subscribe(ctx, callback);
     }
-    public static <T> void subscribeSticky(Object o, String tag, final RxBus.Callback<T> callback) {
-        RxBus.getDefault().subscribeSticky(o, tag, callback);
+    public static <T> void subscribeSticky(Object ctx, String tag, final RxBus.Callback<T> callback) {
+        RxBus.getDefault().subscribeSticky(ctx, tag, callback);
     }
 
-    public static <T> void subscribeSticky(Object o, final RxBus.Callback<T> callback) {
-        RxBus.getDefault().subscribeSticky(o, callback);
+    public static <T> void subscribeSticky(Object ctx, final RxBus.Callback<T> callback) {
+        RxBus.getDefault().subscribeSticky(ctx, callback);
     }
     //////////////////////////////
 }
