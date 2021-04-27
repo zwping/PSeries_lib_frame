@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import razerdp.basepopup.BasePopupWindow;
 import win.zwping.code.review.PTextView;
+import win.zwping.code.review.re.TimerSup;
 import win.zwping.frame.R;
 
 import static win.zwping.code.utils.EmptyUtil.isNotEmpty;
@@ -30,13 +31,31 @@ public class LoadingPop extends BasePopupWindow {
     }
 
     public LoadingPop setTxt(@Nullable CharSequence txt) {
-        loadingPtv.setGone(isNotEmpty(txt));
-        loadingPtv.setText(txt);
+        if (isNotEmpty(txt)) {
+            loadingPtv.setVisibility(View.VISIBLE);
+            loadingPtv.setText(txt);
+        } else {
+            loadingPtv.setVisibility(View.GONE);
+            ll();
+        }
         return this;
     }
 
     @Override
     public View onCreateContentView() {
         return createPopupById(R.layout.comm_pop_loading);
+    }
+
+
+    private void ll() {
+        TimerSup t = new TimerSup(timerSur -> {
+            if (null != loadingPtv) loadingPtv.setVisibility(View.VISIBLE);
+        }, 1000).schedule();
+        setOnDismissListener(new OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                if (null != t) t.cancel();
+            }
+        });
     }
 }
